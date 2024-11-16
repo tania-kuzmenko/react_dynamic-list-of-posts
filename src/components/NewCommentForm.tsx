@@ -6,13 +6,11 @@ type Props = {
   postid: number;
   isLoadingComments: boolean;
   onSubmit: (comment: Comment) => void;
-  commentLoading: (marker: boolean) => void;
 };
 
 export const NewCommentForm: React.FC<Props> = ({
   postid,
   onSubmit,
-  commentLoading,
   isLoadingComments,
 }) => {
   const [authorName, setAuthorName] = useState('');
@@ -47,7 +45,6 @@ export const NewCommentForm: React.FC<Props> = ({
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    commentLoading(true);
     if (!authorName) {
       setAuthorNameError('Name is required');
     }
@@ -71,7 +68,6 @@ export const NewCommentForm: React.FC<Props> = ({
       email: authorEmail,
       body: commentText,
     });
-    commentLoading(false);
   };
 
   const handleClearForm = () => {
@@ -134,7 +130,7 @@ export const NewCommentForm: React.FC<Props> = ({
           <input
             value={authorEmail}
             onChange={handleAuthorEmailChange}
-            type="text"
+            type="email"
             name="email"
             id="comment-author-email"
             placeholder="email@test.com"

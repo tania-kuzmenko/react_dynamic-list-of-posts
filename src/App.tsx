@@ -100,9 +100,9 @@ export const App = () => {
   };
 
   const handleAddComment = async (comment: Comment) => {
+    setIsLoadingComments(true);
     try {
       const newComment: Comment = await addComment({
-        id: comment.id,
         postId: comment.postId,
         name: comment.name,
         email: comment.email,
@@ -112,7 +112,8 @@ export const App = () => {
       setComments(prevComments => [...prevComments, newComment]);
     } catch (err) {
       setError('Unable to add a comment');
-      throw err;
+    } finally {
+      setIsLoadingComments(false);
     }
   };
 
@@ -189,7 +190,6 @@ export const App = () => {
                   deleteComment={handleDeleteComment}
                   addComment={handleAddComment}
                   isLoadingComments={isLoadingComments}
-                  commentLoading={() => setIsLoadingComments}
                 />
               </div>
             </div>

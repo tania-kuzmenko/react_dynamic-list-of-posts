@@ -1,4 +1,4 @@
-import { Comment } from '../types/Comment';
+import { Comment, CommentData } from '../types/Comment';
 import { client } from '../utils/fetchClient';
 
 export const getComments = (postId: number) => {
@@ -9,6 +9,6 @@ export function deleteComment(commentId: number) {
   return client.delete(`/comments/${commentId}`);
 }
 
-export function addComment({ postId, name, email, body }: Comment) {
+export function addComment({ postId, name, email, body }: CommentData) {
   return client.post<Comment>('/comments', { postId, name, email, body });
 }

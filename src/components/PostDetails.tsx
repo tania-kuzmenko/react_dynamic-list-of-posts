@@ -13,7 +13,6 @@ type Props = {
   isFormOpen: boolean;
   deleteComment: (id: number) => void;
   addComment: (comment: Comment) => void;
-  commentLoading: () => void;
 };
 
 export const PostDetails: React.FC<Props> = ({
@@ -25,7 +24,6 @@ export const PostDetails: React.FC<Props> = ({
   isFormOpen,
   deleteComment,
   addComment,
-  commentLoading,
 }) => {
   return (
     <div className="content" data-cy="PostDetails">
@@ -99,7 +97,6 @@ export const PostDetails: React.FC<Props> = ({
           <NewCommentForm
             postid={post.id}
             onSubmit={addComment}
-            commentLoading={commentLoading}
             isLoadingComments={isLoadingComments}
           />
         )}
