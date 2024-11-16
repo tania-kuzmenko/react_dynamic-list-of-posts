@@ -39,7 +39,7 @@ export const PostDetails: React.FC<Props> = ({
           <div className="block">
             {error && (
               <div className="notification is-danger" data-cy="CommentsError">
-                Something went wrong
+                {error}
               </div>
             )}
 
@@ -95,7 +95,7 @@ export const PostDetails: React.FC<Props> = ({
 
         {isFormOpen && (
           <NewCommentForm
-            postid={post.id}
+            postId={post.id}
             onSubmit={addComment}
             isLoadingComments={isLoadingComments}
           />

@@ -2,7 +2,6 @@ import { Post } from '../types/Post';
 
 type Props = {
   posts: Post[];
-  isloadingComments?: boolean;
   selectedPost: Post | null;
   onClose?: () => void;
   onOpen?: (post: Post) => void;

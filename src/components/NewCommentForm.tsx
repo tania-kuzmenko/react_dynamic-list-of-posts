@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Comment } from '../types/Comment';
 
 type Props = {
-  postid: number;
+  postId: number;
   isLoadingComments: boolean;
   onSubmit: (comment: Comment) => void;
 };
 
 export const NewCommentForm: React.FC<Props> = ({
-  postid,
+  postId,
   onSubmit,
   isLoadingComments,
 }) => {
@@ -63,7 +63,7 @@ export const NewCommentForm: React.FC<Props> = ({
 
     onSubmit({
       id: 0,
-      postId: postid,
+      postId: postId,
       name: authorName,
       email: authorEmail,
       body: commentText,
@@ -116,7 +116,7 @@ export const NewCommentForm: React.FC<Props> = ({
 
         {authorNameError && (
           <p className="help is-danger" data-cy="ErrorMessage">
-            Name is required
+            {authorNameError}
           </p>
         )}
       </div>
@@ -154,7 +154,7 @@ export const NewCommentForm: React.FC<Props> = ({
         </div>
         {authorEmailError && (
           <p className="help is-danger" data-cy="ErrorMessage">
-            Email is required
+            {authorEmailError}
           </p>
         )}
       </div>
@@ -178,7 +178,7 @@ export const NewCommentForm: React.FC<Props> = ({
         </div>
         {commentTextError.length > 0 && (
           <p className="help is-danger" data-cy="ErrorMessage">
-            Enter some text
+            {commentTextError}
           </p>
         )}
       </div>
