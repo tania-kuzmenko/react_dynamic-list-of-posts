@@ -25,7 +25,10 @@ export const UserSelector: React.FC<Props> = ({
   };
 
   return (
-    <div data-cy="UserSelector" className="dropdown is-active">
+    <div
+      data-cy="UserSelector"
+      className={classNames('dropdown', { 'is-active': isDropdownOpen })}
+    >
       <div className="dropdown-trigger">
         <button
           type="button"
@@ -40,8 +43,8 @@ export const UserSelector: React.FC<Props> = ({
           </span>
         </button>
       </div>
-      {isDropdownOpen && (
-        <div className="dropdown-menu" id="dropdown-menu" role="menu">
+      <div className="dropdown-menu" id="dropdown-menu" role="menu">
+        {users.length > 0 && (
           <div className="dropdown-content">
             {users.map(user => (
               <a
@@ -57,8 +60,8 @@ export const UserSelector: React.FC<Props> = ({
               </a>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
