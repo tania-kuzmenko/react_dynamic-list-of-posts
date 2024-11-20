@@ -123,20 +123,16 @@ export const App = () => {
         <div className="tile is-ancestor">
           <div className="tile is-parent">
             <div className="tile is-child box is-success">
+              {(isLoadingUsers || isLoadingPosts) && <Loader />}
               <div className="block">
-                {isLoadingUsers || isLoadingPosts ? (
-                  <Loader />
-                ) : (
-                  <UserSelector
-                    selectedUser={selectedUser}
-                    users={users}
-                    onSelect={setSelectedUser}
-                  />
-                )}
+                <UserSelector
+                  selectedUser={selectedUser}
+                  users={users}
+                  onSelect={setSelectedUser}
+                />
               </div>
-
               <div className="block" data-cy="MainContent">
-                {selectedUser && !isLoadingPosts && !error ? (
+                {selectedUser && !error && !isLoadingPosts ? (
                   posts.length > 0 ? (
                     <PostsList
                       posts={posts}
